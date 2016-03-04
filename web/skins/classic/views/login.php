@@ -28,28 +28,22 @@ xhtmlHeaders(__FILE__, translate('Login') );
 	}
 ?>
 <body>
-  <div id="page">
-    <div id="header">
-      <h1>ZoneMinder <?php echo translate('Login') ?></h1>
-    </div>
-    <div id="content">
+  <div class="container">
       <form name="loginForm" id="loginForm" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+        <h1>ZoneMinder <?php echo translate('Login') ?></h1>
         <input type="hidden" name="action" value="login"/>
         <input type="hidden" name="view" value="postlogin"/>
         <input type="hidden" name="postLoginQuery" value="<?php echo $_SERVER['QUERY_STRING'] ?>">
-        <table id="loginTable" class="minor" cellspacing="0">
-          <tbody>
-            <tr>
-              <td class="colLeft"><?php echo translate('Username') ?></td>
-              <td class="colRight"><input type="text" name="username" value="<?php echo isset($_REQUEST['username'])?validHtmlStr($_REQUEST['username']):"" ?>" size="12"/></td>
-            </tr>
-            <tr>
-              <td class="colLeft"><?php echo translate('Password') ?></td>
-              <td class="colRight"><input type="password" name="password" value="" size="12"/></td>
-            </tr>
-          </tbody>
-        </table>
-        <input type="submit" value="<?php echo translate('Login') ?>"/>
+
+		<label class="sr-only" for="username"><?php echo translate('Username') ?></label>
+		<input type="text" name="username" class="form-control" autofocus required placeholder="Username"></input>
+
+
+		<label class="sr-only" for="password"><?php echo translate('Password') ?></label>
+		<input type="password" name="password" class="form-control" required placeholder="Password"></input>
+
+        <input class="btn btn-lg btn-primary btn-block"  type="submit" value="<?php echo translate('Login') ?>"/>
+
 	<!-- PP: Added recaptcha widget if enabled -->
 	<?php
 	if (defined('ZM_OPT_USE_GOOG_RECAPTCHA') 
@@ -61,7 +55,6 @@ xhtmlHeaders(__FILE__, translate('Login') );
 	}
 	?>
       </form>
-    </div>
   </div>
 </body>
 </html>
